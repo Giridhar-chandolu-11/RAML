@@ -1,0 +1,14 @@
+[
+                {
+                  "policyNumber": "001",
+                  "policyType": "Motor" ,
+                  "coverage": "Damage",
+                  "policyID": "401"
+                },
+                {
+          "policyNumber": "003",
+          "policyType": "Health",
+          "coverage": "Hospitalization",
+          "policyID": "402"
+      }
+              ]

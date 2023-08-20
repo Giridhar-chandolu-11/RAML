@@ -1,0 +1,66 @@
+#%RAML 1.0 Library
+types:
+  policy:
+    properties:
+      policyType: string
+      policyNumber:
+        type: string
+        required: true
+        example: 
+          
+      coverage: any
+  
+  addcustomer:
+    properties:
+        PolicyHolderName: string
+        email: string
+          
+        Number:
+          
+          required: true
+          type: string
+          maxLength: 13
+          pattern: ^\+91[6-9][0-9]{9}$
+
+  claimpost:
+    properties:
+      claimNumber: string
+      dateSubmitted: string
+      status: string
+      policyNumber: string
+      policyHolderName: string
+      amount: number
+      description: string
+      adjusterNotes: string
+          
+traits:
+  failure:
+    responses:
+      400:
+        body:
+          application/json:
+            example: !include examples/400.json
+      
+      404:
+        body:
+          application/json:
+            example: !include examples/404.json
+      500:
+        body:
+          application/json:
+            example: !include examples/500.json
+
+
+
+
+resourceTypes:
+  collectionname:
+    get:
+      description: get all the claims for that policy type
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                <<refence1>>
+      
