@@ -1,0 +1,18 @@
+[
+      {
+          "policyNumber": "001",
+          "policyType": "Motor",
+          "coverage":  "accident"
+      }, 
+      {
+          "policyNumber": "002",
+          "policyType": "House",
+          "coverage": ["fire","theft"]
+      }, 
+      {
+          "policyNumber": "003",
+          "policyType": "Health",
+          "coverage": "Hospitalization"
+      }
+      
+  ]
