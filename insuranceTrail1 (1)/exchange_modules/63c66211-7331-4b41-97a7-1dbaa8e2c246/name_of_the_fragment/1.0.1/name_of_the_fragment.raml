@@ -1,0 +1,108 @@
+#%RAML 1.0 Library
+#%RAML 1.0 Library
+types:
+  policy:
+    properties:
+      policyType: string
+      policyNumber:
+        type: string
+        required: true
+        example: 
+      coverage: any
+  
+  addcustomer:
+    properties:
+        PolicyHolderName: string
+        email: string
+        Number:
+          required: true
+          type: string
+          maxLength: 13
+          pattern: ^\+91[6-9][0-9]{9}$
+
+  claimpost:
+    properties:
+      claimNumber: string
+      dateSubmitted: string
+      status: string
+      policyNumber: string
+      policyHolderName: string
+      amount: number
+      description: string
+      adjusterNotes: string
+          
+traits:
+  failure:
+    responses:
+      400:
+        body:
+          application/json:
+            example: {
+                        "error message":"Msg incorrect BAD REQUEST",
+                        "status code": "400-BAD REQUEST"
+                      }
+      
+      404:
+        body:
+          application/json:
+            example: {
+                        "error message":"resource not found",
+                        "status code": "404-Not found"
+                      }
+      500:
+        body:
+          application/json:
+            example: {
+                        "error message":"Internal server error",
+                        "status code": "500- Internal server error"
+                      }
+  clientIdEnforceable:
+    description: Used for Client ID Enforcement
+    headers:
+      client_id:
+        displayName: Client ID
+        type: string
+        required: true
+      client_secret:
+        displayName: Client Secret
+        type: string
+        required: false
+
+
+resourceTypes:
+  collectionname:
+    get:
+      description: get all the claims for that policy type
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                <<refence1>>
+      
+
+securitySchemes:
+  policy1:
+    type: x-policy1
+    description: Security Policy 1
+    describedBy:
+      
+      # Configuration settings for Security Policy 1
+
+  policy2:
+    type: x-policy2
+    description: Security Policy 2
+    describedBy:
+      
+      # Configuration settings for Security Policy 2
+
+  basicauthentication:
+    description: |
+      This API supports Basic Authentication.
+    type: Basic Authentication
+
+
+  
+
+
+

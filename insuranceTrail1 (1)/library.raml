@@ -7,16 +7,13 @@ types:
         type: string
         required: true
         example: 
-          
       coverage: any
   
   addcustomer:
     properties:
         PolicyHolderName: string
         email: string
-          
         Number:
-          
           required: true
           type: string
           maxLength: 13
@@ -49,6 +46,17 @@ traits:
         body:
           application/json:
             example: !include examples/500.json
+  clientIdEnforceable:
+    description: Used for Client ID Enforcement
+    headers:
+      client_id AAAAAAAAAA:
+        displayName: Client ID
+        type: string
+        required: true
+      client_secret AAAAAAA:
+        displayName: Client Secret
+        type: string
+        required: false
 
 
 
@@ -64,3 +72,46 @@ resourceTypes:
               example: |
                 <<refence1>>
       
+
+
+  
+securitySchemes:
+  policy1:
+    type: x-policy1
+    description: Security Policy 1
+    describedBy:
+      headers:
+        policyname: string
+
+      # Configuration settings for Security Policy 1
+
+  policy2:
+    type: x-policy2
+    description: Security Policy 2
+    describedBy:
+      
+      # Configuration settings for Security Policy 2
+
+  basicauthentication:
+    description: |
+      This API supports Basic Authentication.
+    type: Basic Authentication
+
+  clientIdEnforceable:
+    description: Used for Client ID Enforcement
+    describedBy:
+      
+      headers:
+        client_id:
+          displayName: Client ID
+          type: string
+          required: true
+        client_secret:
+          displayName: Client Secret
+          type: string
+          required: false
+
+  
+
+
+
